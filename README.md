@@ -22,4 +22,4 @@ Script ishga tushganda quyidagi papkalar iyerarxiyasini avtomatik quradi:
 Scriptni yuklab o'tirmasdan, to'g'ridan-to'g'ri ishlatish uchun terminalga quyidagi buyruqni yozing:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/SanakulovDev/init_go/main/init_go.sh | bash
+curl -sL https://raw.githubusercontent.com/SanakulovDev/init_go/refs/heads/main/init_go.ssh| bash
