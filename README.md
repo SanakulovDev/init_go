@@ -15,6 +15,7 @@ Script ishga tushganda quyidagi papkalar iyerarxiyasini avtomatik quradi:
 │   └── model/          # Ma'lumot qoliplari (Structs)
 ├── go.mod              # Loyiha modullari
 └── README.md           # Loyiha hujjati
+````
 
 ## ⚡️ Tezkor ishlatish (O'rnatmasdan)
 
