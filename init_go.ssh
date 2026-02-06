@@ -1,15 +1,54 @@
 #!/bin/bash
 
-# Loyiha nomini so'rash
-read -p "Loyiha nomini kiriting: " PROJECT_NAME
+# 1. Joriy papka nomini olamiz (masalan: mini-wallet-API)
+CURRENT_DIR_NAME=$(basename "$PWD")
 
-mkdir -p $PROJECT_NAME/cmd
-mkdir -p $PROJECT_NAME/internal/controller
-mkdir -p $PROJECT_NAME/internal/service
-mkdir -p $PROJECT_NAME/internal/repository
-mkdir -p $PROJECT_NAME/internal/model
+# 2. Foydalanuvchidan Module nomini so'raymiz
+# Agar hech narsa yozib Enter bossa, papka nomini ishlatamiz
+echo "Joriy papka: $CURRENT_DIR_NAME"
+read -p "Module nomi qanday bo'lsin? (Default: $CURRENT_DIR_NAME): " MODULE_NAME < /dev/tty
 
-cd $PROJECT_NAME
-go mod init $PROJECT_NAME
-touch cmd/main.go
-echo "Loyiha $PROJECT_NAME muvaffaqiyatli yaratildi!"
+# Agar bo'sh bo'lsa, default nomni olamiz
+if [ -z "$MODULE_NAME" ]; then
+    MODULE_NAME=$CURRENT_DIR_NAME
+fi
+
+echo "🚀 '$MODULE_NAME' uchun Clean Architecture yaratilmoqda..."
+
+# 3. Papkalarni SHU YERNING O'ZIDA yaratish
+mkdir -p cmd
+mkdir -p internal/controller
+mkdir -p internal/service
+mkdir -p internal/repository
+mkdir -p internal/model
+
+# 4. go.mod faylini yaratish (Agar oldin yo'q bo'lsa)
+if [ ! -f "go.mod" ]; then
+    go mod init "$MODULE_NAME"
+    echo "✅ go mod init bajarildi"
+else
+    echo "⚠️ go.mod allaqachon bor, tegmadim."
+fi
+
+# 5. main.go faylini yaratish (Agar oldin yo'q bo'lsa)
+if [ ! -f "cmd/main.go" ]; then
+    cat <<EOF > cmd/main.go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("Salom, $MODULE_NAME loyihasi ishga tushdi!")
+}
+EOF
+    echo "✅ cmd/main.go yaratildi"
+else
+    echo "⚠️ cmd/main.go allaqachon bor, tegmadim."
+fi
+
+# 6. Gin va boshqa kerakli kutubxonalarni yuklash (ixtiyoriy)
+# go get -u github.com/gin-gonic/gin
+
+echo "🎉 Tayyor! Loyiha strukturasi o'rnatildi."
