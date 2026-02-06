@@ -1,25 +1,24 @@
 # Go Clean Architecture Initializer (init_go)
 
-Ushbu script Go tilida yangi loyihalarni professional **Clean Architecture** (Toza arxitektura) strukturasi asosida tezkorlik bilan yaratish uchun mo'ljallangan.
+This script is designed to rapidly scaffold new Go projects following a professional **Clean Architecture** structure.
 
-## 🏗 Loyiha Strukturasi
+## 🏗 Project Structure
 
-Script ishga tushganda quyidagi papkalar iyerarxiyasini avtomatik quradi:
+When executed, the script automatically generates the following directory hierarchy:
 
 ```text
-├── cmd/                # Dasturga kirish nuqtasi (main.go)
-├── internal/           # Loyihaning ichki kodi (Tashqaridan import qilib bo'lmaydi)
-│   ├── controller/     # HTTP Handlerlar (Gin, Fiber va h.k.)
-│   ├── service/        # Biznes mantiq (Logika qatlami)
-│   ├── repository/     # Ma'lumotlar bazasi bilan ishlash qatlami
-│   └── model/          # Ma'lumot qoliplari (Structs)
-├── go.mod              # Loyiha modullari
-└── README.md           # Loyiha hujjati
+├── cmd/                # Application entry point (main.go)
+├── internal/           # Private application code (Cannot be imported externally)
+│   ├── controller/     # HTTP Handlers (Gin, Fiber, etc.)
+│   ├── service/        # Business Logic (Service Layer)
+│   ├── repository/     # Data Access Layer (Repository Pattern)
+│   └── model/          # Data Models (Structs)
+├── go.mod              # Project modules
+└── README.md           # Project documentation
 ````
 
-## ⚡️ Tezkor ishlatish (O'rnatmasdan)
-
-Scriptni yuklab o'tirmasdan, to'g'ridan-to'g'ri ishlatish uchun terminalga quyidagi buyruqni yozing:
+## ⚡️ Quick Start (No Installation Required)
+To run the script directly without downloading it, execute the following command in your terminal:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/SanakulovDev/init_go/refs/heads/main/init_go.ssh| bash
