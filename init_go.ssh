@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Loyiha nomini so'rash
+read -p "Loyiha nomini kiriting: " PROJECT_NAME
+
+mkdir -p $PROJECT_NAME/cmd
+mkdir -p $PROJECT_NAME/internal/controller
+mkdir -p $PROJECT_NAME/internal/service
+mkdir -p $PROJECT_NAME/internal/repository
+mkdir -p $PROJECT_NAME/internal/model
+
+cd $PROJECT_NAME
+go mod init $PROJECT_NAME
+touch cmd/main.go
+echo "Loyiha $PROJECT_NAME muvaffaqiyatli yaratildi!"
